@@ -1,4 +1,4 @@
-import {DELATE_CITY, ADD_CITY} from '../actions/actionTypes'
+import {DELATE_CITY, ADD_CITY, LOADING} from '../actions/actionTypes'
 
 const initialStayt = {
   cityes:[]
@@ -14,6 +14,10 @@ export default function cityesReduser(state = initialStayt, action){
     case ADD_CITY:
       return {
         ...state, cityes:[...state.cityes, action.newCity]
+      }
+    case LOADING:
+      return{
+        ...state
       }
     default:
       return state

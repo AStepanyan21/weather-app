@@ -1,6 +1,5 @@
 import React, { useState }from 'react'
-import {connect} from 'react-redux'
-import {fetchNewCity} from '../../store/actions/city'
+
 import './InputCity.css'
 
 const InputCity = props =>{
@@ -44,16 +43,6 @@ const InputCity = props =>{
   )
 }
 
-function mapStateToProps(state){
-  return{
-    errorMesage: state.error.error
-  }
-}
 
-function mapDispatchToProps(dispatch){
-  return{
-    fetchNewCity:(cityName)=>dispatch(fetchNewCity(cityName))
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(InputCity)
+export default InputCity

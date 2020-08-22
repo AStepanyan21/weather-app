@@ -1,5 +1,8 @@
-import {DELATE_CITY, ADD_CITY, ADD_ERROR_MESSAGE, CLEAR_ERROR_MESSAGE} from './actionTypes'
-import {API_KEY} from '../../API/apiKey'
+import {DELATE_CITY, 
+    ADD_CITY, 
+    ADD_ERROR_MESSAGE, 
+    CLEAR_ERROR_MESSAGE, 
+    LOADING} from './actionTypes'
 
 export function delateCity(id){
     return {
@@ -9,29 +12,10 @@ export function delateCity(id){
         
 }
 
-export function fetchNewCity(cityName){
-  return dispatch =>{
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY}`)
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      const newCity = {
-            name: data.name , 
-            temperatura: data.main.temp,
-            id: Date.now()
-          }
-      dispatch(addNewCity(newCity))
-    })
-    .catch((e)=>{
-      console.log(e)
-      dispatch(startErrorMessage())
-      setTimeout(()=>{
-        dispatch(clearErrorMessage())
-      },5000)
-    }
-    )
-  }       
+export function startLoading(){
+  return{
+    type: LOADING
+  }
 }
 
 export function addNewCity(newCity){

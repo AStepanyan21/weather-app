@@ -11,7 +11,7 @@ class CitysList extends Component{
         {this.props.cityes.length!==0
           ?  this.props.cityes.map((city, index)=>{
             return( 
-              <City
+              <City 
                   key = {index}
                   weather = {city}
                   delateInfo = {this.props.delateCity}
