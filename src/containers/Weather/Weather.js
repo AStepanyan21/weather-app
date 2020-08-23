@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import './Weather.css'
+import {connect} from 'react-redux'
 import InputCity from '../../components/InputCity/InputCity'
 import CityesList from '../../components/CityesList/CityesList'
-import {connect} from 'react-redux'
 import {fetchNewCity} from '../../controllers/cityController'
-
+import {delateCity} from '../../store/actions/city'
+import './Weather.css'
 
 class Weather extends Component{
 
@@ -16,7 +16,10 @@ class Weather extends Component{
             errorMesage = {this.props.errorMesage}
             fetchNewCity={this.props.fetchNewCity}
             />
-          <CityesList/>
+          <CityesList
+            cityes = {this.props.cityes}
+            delateCity = {this.props.delateCity}
+          />
         </div>
       </div>
       )   
@@ -25,13 +28,15 @@ class Weather extends Component{
 
 function mapStateToProps(state){
   return{
-    errorMesage: state.error.error
+    errorMesage: state.error.error,
+    cityes: state.cityes.cityes,
   }
 }
 
 function mapDispatchToProps(dispatch){
   return{
-    fetchNewCity:(cityName)=>dispatch(fetchNewCity(cityName))
+    fetchNewCity: (cityName)=>dispatch(fetchNewCity(cityName)),
+    delateCity: id => dispatch(delateCity(id))
   }
 }
 

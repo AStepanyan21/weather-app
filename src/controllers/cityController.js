@@ -1,9 +1,8 @@
 import {API_KEY} from '../API/apiKey'
-import {
-    addNewCity, 
-    startErrorMessage, 
-    clearErrorMessage,
-    startLoading} from '../store/actions/city'
+import {addNewCity, 
+        startErrorMessage, 
+        clearErrorMessage,
+        startLoading} from '../store/actions/city'
 
 export function fetchNewCity(cityName){
   return dispatch =>{
