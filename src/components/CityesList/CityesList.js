@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import City from './City/City'
 
-
 class CitysList extends Component{
   
   render(){

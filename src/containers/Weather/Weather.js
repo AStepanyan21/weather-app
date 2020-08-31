@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import InputCity from '../../components/InputCity/InputCity'
 import CityesList from '../../components/CityesList/CityesList'
-import {fetchNewCity} from '../../controllers/cityController'
-import {delateCity} from '../../store/actions/city'
+import {cityController} from '../../core/managers/conrollerManeger'
+import {delateCity} from '../../core/store/actions/city'
 import './Weather.css'
 
 class Weather extends Component{
@@ -14,7 +14,7 @@ class Weather extends Component{
         <div className="col justify-content-md-center">
           <InputCity 
             errorMesage = {this.props.errorMesage}
-            fetchNewCity={this.props.fetchNewCity}
+            cityController={this.props.cityController}
             />
           <CityesList
             cityes = {this.props.cityes}
@@ -35,7 +35,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return{
-    fetchNewCity: (cityName)=>dispatch(fetchNewCity(cityName)),
+    cityController: (payload)=>dispatch(cityController.addNewCity(payload)),
     delateCity: id => dispatch(delateCity(id))
   }
 }

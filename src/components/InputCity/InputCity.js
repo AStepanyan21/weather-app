@@ -1,5 +1,4 @@
 import React, { useState }from 'react'
-
 import './InputCity.css'
 
 const InputCity = props =>{
@@ -9,7 +8,7 @@ const InputCity = props =>{
     
   }
   const addCity = (event) =>{
-    props.fetchNewCity(city.name)
+    props.cityController({city:city.name})
     setCity({name: ''})
     event.preventDefault()
   }
@@ -30,7 +29,7 @@ const InputCity = props =>{
           >
           Something went wrong
           </small>
-           :null 
+        : null 
            }
       </div>
         

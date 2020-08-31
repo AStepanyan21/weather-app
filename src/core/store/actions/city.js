@@ -5,26 +5,25 @@ import {DELATE_CITY,
     LOADING} from './actionTypes'
 
 export function delateCity(id){
-    return {
-        type: DELATE_CITY,
-        id
-    }
-        
+  return {
+    type: DELATE_CITY,
+    id
+  }        
 }
 
-export function startLoading(){
+export function startLoading(loading){
   return{
-    type: LOADING
+    type: LOADING,
+    loading
   }
 }
 
-export function addNewCity(newCity){
+export function addNewCity(payload){
   return {
     type: ADD_CITY,
-    newCity
+    payload
   }
 }
-
 
 export function startErrorMessage(){
   return{
