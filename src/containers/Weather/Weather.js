@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import InputCity from '../../components/InputCity/InputCity'
 import CityesList from '../../components/CityesList/CityesList'
-import {cityController} from '../../core/managers/conrollerManeger'
-import {delateCity} from '../../core/store/actions/city'
+import {cityController} from '../../core/managers/controllerManager'
+import {deleteCity} from '../../core/store/actions/city'
+import selectorManager from '../../core/managers/selectorManager'
 import './Weather.css'
 
 class Weather extends Component{
@@ -18,7 +19,7 @@ class Weather extends Component{
             />
           <CityesList
             cityes = {this.props.cityes}
-            delateCity = {this.props.delateCity}
+            deleteCity = {this.props.deleteCity}
           />
         </div>
       </div>
@@ -28,15 +29,15 @@ class Weather extends Component{
 
 function mapStateToProps(state){
   return{
-    errorMesage: state.error.error,
-    cityes: state.cityes.cityes,
+    errorMesage: selectorManager.citySelector.getErrorMesage(state),
+    cityes: selectorManager.citySelector.getCityes(state),
   }
 }
 
 function mapDispatchToProps(dispatch){
   return{
     cityController: (payload)=>dispatch(cityController.addNewCity(payload)),
-    delateCity: id => dispatch(delateCity(id))
+    deleteCity: id => dispatch(deleteCity(id))
   }
 }
 

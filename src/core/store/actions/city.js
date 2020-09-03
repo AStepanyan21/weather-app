@@ -4,7 +4,7 @@ import {DELATE_CITY,
     CLEAR_ERROR_MESSAGE, 
     LOADING} from './actionTypes'
 
-export function delateCity(id){
+export function deleteCity(id){
   return {
     type: DELATE_CITY,
     id

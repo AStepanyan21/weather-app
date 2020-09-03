@@ -5,8 +5,9 @@ import {addNewCity,
         startLoading} from '../store/actions/city'
 
 class CityController {
-  constructor(sdk){
+  constructor(selector, sdk){
     this._sdk = sdk
+    this._selector = selector
   }
 
   addNewCity(payload){

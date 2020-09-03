@@ -5,7 +5,7 @@ class NetworkService {
   }
 
   makeAPIPostRequest = (url, data = null) => {
-    const options = {method: 'POST', body: JSON.stringify(data)}
+    const options = {method: 'POST', body: data}
     return this.makeAPIRequest(url, options)
   }
 
@@ -15,12 +15,12 @@ class NetworkService {
   }
 
   makeAPIPatchRequest = (url, data = null) => {
-    const options = {method: 'PATCH',body: JSON.stringify(data)}
+    const options = {method: 'PATCH',body: data}
     return this.makeAPIRequest(url, options)
   }
 
   makeAPIRequest(url,  options){
-     async function postData(url, options){
+    async function postData(url, options){
       const response = await fetch(url, options)
       return await response.json()
     }

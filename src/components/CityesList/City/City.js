@@ -11,7 +11,7 @@ const City = (props) => {
       <button 
         type="button" 
         className="btn btn-danger " 
-        onClick = {()=>props.delateInfo(props.weather.id)}
+        onClick = {()=>props.deleteInfo(props.weather.id)}
       >Delate</button>
     </li>
   )

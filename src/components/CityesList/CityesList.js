@@ -12,7 +12,7 @@ class CitysList extends Component{
               <City 
                   key = {index}
                   weather = {city}
-                  delateInfo = {this.props.delateCity}
+                  deleteInfo = {this.props.deleteCity}
               />)
           })
           : null}
