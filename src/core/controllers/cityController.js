@@ -5,9 +5,8 @@ import {addNewCity,
         startLoading} from '../store/actions/city'
 
 class CityController {
-  constructor(selector, sdk){
+  constructor(sdk){
     this._sdk = sdk
-    this._selector = selector
   }
 
   addNewCity(payload){
@@ -25,6 +24,7 @@ class CityController {
         }
         dispatch(addNewCity(newCity))
       } catch(e){    
+        console.log(e)
         dispatch(startErrorMessage())
         setTimeout(()=>{
           dispatch(clearErrorMessage())

@@ -1,22 +1,35 @@
+import {AppConstants} from '../../settings/constants'
+
 class NetworkService {
-  makeAPIGetRequest = (url, data = null) => {
-    const options = {method: 'GET'}
-    return this.makeAPIRequest(url, options)
+
+  makeAPIGetRequest = (url) => {
+    return this.makeAPIRequest(
+      url, 
+      this._getOptions(AppConstants.network.network_request_methods.GET))
   }
 
   makeAPIPostRequest = (url, data = null) => {
-    const options = {method: 'POST', body: data}
-    return this.makeAPIRequest(url, options)
+    return this.makeAPIRequest(
+      url, 
+      this._getOptions(AppConstants.network.network_request_methods.POST, data))
   }
 
-  makeAPIDeleteRequest = (url, data = null) => {
-    const options = {method: 'DELETE'}
-    return this.makeAPIRequest(url, options)
+  makeAPIDeleteRequest = (url) => {
+    return this.makeAPIRequest(
+      url, 
+      this._getOptions(AppConstants.network.network_request_methods.DELETE))
   }
 
   makeAPIPatchRequest = (url, data = null) => {
-    const options = {method: 'PATCH',body: data}
-    return this.makeAPIRequest(url, options)
+    return this.makeAPIRequest(
+      url, 
+      this._getOptions(AppConstants.network.network_request_methods.PATCH, data))
+  }
+
+  makeAPIPutRequest = (url, data = null) => {
+    return this.makeAPIRequest(
+      url, 
+      this._getOptions(AppConstants.network.network_request_methods.PUT, data))
   }
 
   makeAPIRequest(url,  options){
@@ -26,6 +39,17 @@ class NetworkService {
     }
     return postData(url, options)
   }
+
+  _getOptions = (method, data)=>{
+    const options ={
+       method: method, 
+       data : data || {} ,
+       headers: {
+        'Accept': 'application/json',
+      }
+     }
+     return options
+   }
 }
 
 export default NetworkService
