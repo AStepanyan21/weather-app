@@ -1,4 +1,4 @@
-import {API_KEY} from '../../API/apiKey'
+import {AppConstants} from '../settings/constants'
 import {addNewCity, 
         startErrorMessage, 
         clearErrorMessage,
@@ -15,7 +15,7 @@ class CityController {
         dispatch(startLoading({loading: true}))
         const city= payload.city
         if (!city) return;
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${AppConstants.network.API_KEY}`
         const data = await this._sdk.addCity(url)
         const newCity = {
           name: data.name , 
@@ -24,13 +24,12 @@ class CityController {
         }
         dispatch(addNewCity(newCity))
       } catch(e){    
-        console.log(e)
         dispatch(startErrorMessage())
         setTimeout(()=>{
           dispatch(clearErrorMessage())
         },5000)
       } finally{
-      dispatch(startLoading({loading: true}))
+      dispatch(startLoading({loading: false}))
       }
     } 
   }
